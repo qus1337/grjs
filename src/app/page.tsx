@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useTheme } from "@/components/theme/theme-provider";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { FlipWords } from "@/components/ui/flip-words";
@@ -11,21 +11,14 @@ import Link from "next/link";
 import { motion } from "motion/react";
 
 export default function PersonalIntroPage() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
+  const { resolvedTheme, toggleTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   return (
     <div className="min-h-screen w-full flex flex-col bg-[var(--background)] text-[var(--foreground)] overflow-x-hidden transition-colors duration-300">
       {/* 简单的模式切换按钮 */}
       <button
-        onClick={() => setIsDark(!isDark)}
+        onClick={toggleTheme}
         className="fixed top-6 right-6 z-50 p-3 rounded-full bg-[var(--card-bg)] border border-[var(--border)] text-[var(--primary)] hover:scale-110 transition-all shadow-lg backdrop-blur-md"
         title={isDark ? "切换到浅色模式 (蓝白)" : "切换到深色模式 (原版)"}
       >
