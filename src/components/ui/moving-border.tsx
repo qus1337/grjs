@@ -28,7 +28,7 @@ export const MovingBorder = ({
     AsComponent,
     {
       className: cn(
-        "relative flex rounded-full p-[1px] text-sm font-medium transition-all duration-300 bg-transparent text-white",
+        "relative flex rounded-full p-[1px] text-sm font-medium transition-all duration-300 bg-transparent text-[var(--foreground)]",
         containerClassName
       ),
       style: { borderRadius },
@@ -47,7 +47,7 @@ export const MovingBorder = ({
           }}
         />
       </div>
-      <div className={cn("relative z-10 flex items-center justify-center rounded-full bg-black px-6 py-2", className)}>
+      <div className={cn("relative z-10 flex items-center justify-center rounded-full bg-inherit px-6 py-2", className)}>
         {children}
       </div>
     </>
